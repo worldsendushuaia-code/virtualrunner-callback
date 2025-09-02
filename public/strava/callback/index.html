@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+<body>
+<script>
+  (function() {
+    // 例: https://xxxx.vercel.app/strava/callback?code=...&scope=...
+    var qs = window.location.search || "";
+    var hash = window.location.hash || "";
+    // ← あなたのアプリのカスタムURLスキームに合わせる
+    var target = "virtualrunner://auth/strava" + qs + hash;
+    // すぐアプリに戻す
+    window.location.replace(target);
+    // フォールバック表示（任意）
+    setTimeout(function(){
+      document.body.innerHTML = "<p>アプリに戻れない場合は、インストールや起動状態を確認してください。</p>";
+    }, 1200);
+  })();
+</script>
+</body>
+</html>
